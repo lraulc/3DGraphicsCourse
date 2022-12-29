@@ -51,14 +51,17 @@ bool initialize_window(void)
 void draw_grid(uint32_t gridColor)
 {
 	// Encontrar multiplos de 10 de X y de Y
-	int steps = 10;
+	int steps = 50;
 
 	// Vertical Lines
-	for (int y = 0; y < window_height; y += 10)
+	for (int y = 0; y < window_height; y++)
 	{
-		for (int x = 0; x < window_width; x += 10)
+		for (int x = 0; x < window_width; x++)
 		{
-			color_buffer[(window_width * y) + x] = gridColor;
+			if (x % steps == 0 || y % steps == 0)
+			{
+				color_buffer[(window_width * y) + x] = gridColor;
+			}
 		}
 	}
 }
