@@ -2,7 +2,7 @@
 #include <stdint.h> //Adds uninsigned ints for 8, 16 or 32
 #include <stdbool.h>
 #include <SDL.h>
-#include "Main.h"
+
 
 bool is_running = false;
 SDL_Window* window = NULL;
@@ -49,6 +49,8 @@ bool initialize_window(void)
 		fprintf(stderr, "Error creating SDL renderer. \n");
 		return false;
 	}
+
+	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 
 	return true;
 }
@@ -99,6 +101,35 @@ void update(void)
 
 }
 
+void draw_grid(uint32_t gridColor)
+{
+	// Encontrar multiplos de 10 de X y de Y
+	int steps = 10;
+
+	// Vertical Lines
+	for (int y = 0; y < window_height; y+= 10)
+	{
+		for (int x = 0; x < window_width; x+= 10)
+		{
+			color_buffer[(window_width * y) + x] = gridColor;
+		}
+	}
+}
+
+
+void draw_rectangle(int x, int y, int width, int height, uint32_t rectColor)
+{
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			int current_x = x + i;
+			int current_y = y + j;
+			color_buffer[(window_width * current_x) + current_y] = rectColor;
+		}
+	}
+}
+
 void render_color_buffer(void)
 {
 	SDL_UpdateTexture(
@@ -124,12 +155,17 @@ void clear_color_buffer(uint32_t color)
 
 void render(void)
 {
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	//SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
+
 	//...
+	draw_rectangle((int)256, 256, 400, 400, 0XFFFFFFFF);
+	draw_grid(0xFF222222); // Grid Color
+
+
 	render_color_buffer();
-	clear_color_buffer(0xFFFFFF00);
+	clear_color_buffer(0xFF000000);
 
 	SDL_RenderPresent(renderer);
 }
