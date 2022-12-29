@@ -1,7 +1,7 @@
 #include <stdio.h> // Adds standard library
 #include <stdint.h> //Adds uninsigned ints for 8, 16 or 32
 #include <stdbool.h> // Adds boolean support
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "Display.h"
 
 
