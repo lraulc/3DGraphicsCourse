@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "display.h": "c",
-        "sdl.h": "c"
+        "sdl.h": "c",
+        "vector.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

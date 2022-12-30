@@ -20,7 +20,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/3DGraphics/include"
+                "${workspaceFolder}/3DGraphics/include",
+                "${workspaceFolder}/3DGraphics"
             ],
             "defines": [
                 "_DEBUG",

@@ -3,6 +3,7 @@
 #include <stdbool.h> // Adds boolean support
 #include <SDL2/SDL.h>
 #include "Display.h"
+#include "vector.h"
 
 bool is_running = false;
 
@@ -70,6 +71,8 @@ int main(int argc, char *args[])
 	is_running = initialize_window();
 
 	setup();
+
+	vec3_t my_vector = {2.0, 3.0, 4.0};
 
 	while (is_running)
 	{
