@@ -4,5 +4,12 @@
         "sdl.h": "c",
         "vector.h": "c"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "e:\\Assets\\3DGraphicsCourse\\3DGraphicsCourse\\3DGraphics",
+            "binaryPath": "e:\\Assets\\3DGraphicsCourse\\3DGraphicsCourse\\3DGraphics\\renderer.exe",
+            "binaryArgs": []
+        }
+    ]
 }

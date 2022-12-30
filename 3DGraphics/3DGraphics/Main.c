@@ -72,7 +72,8 @@ int main(int argc, char *args[])
 
 	setup();
 
-	vec3_t my_vector = {2.0, 3.0, 4.0};
+	// VECTOR STRUCT - FIRST IMPLEMENTATION
+	vec3_t my_vector = {2.0, 3.0, -4.0};
 
 	while (is_running)
 	{
