@@ -11,6 +11,9 @@
 
 #define N_POINTS(x) (x * x * x)
 vec3_t cube_points[N_POINTS(9)]; // 9*9*9 cube
+vec2_t projected_points[N_POINTS(9)];
+
+float fov_factor = 128;
 
 bool is_running = false;
 
@@ -51,6 +54,16 @@ void setup(void)
 	}
 }
 
+// Orthographic Projection
+// Recieves 3D Vectors and converts to 2D
+vec2_t project(vec3_t point)
+{
+	vec2_t projected_point = {
+		.x = (fov_factor * point.x),
+		.y = (fov_factor * point.y)};
+	return projected_point;
+}
+
 void process_input(void)
 {
 	SDL_Event event;
@@ -70,18 +83,29 @@ void process_input(void)
 
 void update(void)
 {
-	// TODO:
+	for (int i = 0; i < N_POINTS(9); i++)
+	{
+		vec3_t point = cube_points[i];
+
+		// Project the current point
+		vec2_t projected_point = project(point);
+
+		// Save the projected to the 2D vector in the array of projected points
+		projected_points[i] = projected_point;
+	}
 }
 
 void render(void)
 {
-	// SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-	SDL_RenderClear(renderer);
-
 	//...
-	draw_pixel(20, 20, 0XFFFFFF00);
-	draw_rectangle((int)256, 256, 400, 400, 0XFFAA44AA);
 	draw_grid(0xFF222222); // Grid Color
+
+	// Loop all projected points and render them
+	for (int i = 0; i < N_POINTS(9); i++)
+	{
+		vec2_t projected_point = projected_points[i];
+		draw_rectangle(projected_point.x + window_width / 2, projected_point.y + window_height / 2, 4, 4, 0XFFFFAA00);
+	}
 
 	render_color_buffer();
 	clear_color_buffer(0xFF000000);
