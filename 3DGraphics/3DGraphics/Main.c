@@ -10,10 +10,13 @@
 /////////////////////////////////////////////////////////
 
 #define N_POINTS(x) (x * x * x)
-vec3_t cube_points[N_POINTS(9)]; // 9*9*9 cube
-vec2_t projected_points[N_POINTS(9)];
+const int num_cube_points = 9;
+vec3_t cube_points[N_POINTS(num_cube_points)]; // 9*9*9 cube
+vec2_t projected_points[N_POINTS(num_cube_points)];
 
-float fov_factor = 128;
+vec3_t camera_pos = {.x = 0, .y = 0, .z = -5};
+
+float fov_factor = 640;
 
 bool is_running = false;
 
@@ -59,8 +62,8 @@ void setup(void)
 vec2_t project(vec3_t point)
 {
 	vec2_t projected_point = {
-		.x = (fov_factor * point.x),
-		.y = (fov_factor * point.y)};
+		.x = (fov_factor * point.x) / point.z,
+		.y = (fov_factor * point.y) / point.z};
 	return projected_point;
 }
 
@@ -83,9 +86,12 @@ void process_input(void)
 
 void update(void)
 {
-	for (int i = 0; i < N_POINTS(9); i++)
+	for (int i = 0; i < N_POINTS(num_cube_points); i++)
 	{
 		vec3_t point = cube_points[i];
+
+		// Move the camera position
+		point.z -= camera_pos.z;
 
 		// Project the current point
 		vec2_t projected_point = project(point);
@@ -101,7 +107,7 @@ void render(void)
 	draw_grid(0xFF222222); // Grid Color
 
 	// Loop all projected points and render them
-	for (int i = 0; i < N_POINTS(9); i++)
+	for (int i = 0; i < N_POINTS(num_cube_points); i++)
 	{
 		vec2_t projected_point = projected_points[i];
 		draw_rectangle(projected_point.x + window_width / 2, projected_point.y + window_height / 2, 4, 4, 0XFFFFAA00);
