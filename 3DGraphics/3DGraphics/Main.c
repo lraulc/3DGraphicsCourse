@@ -5,6 +5,13 @@
 #include "Display.h"
 #include "vector.h"
 
+/////////////////////////////////////////////////////////
+// Declare array of vectors
+/////////////////////////////////////////////////////////
+
+#define N_POINTS(x) (x * x * x)
+vec3_t cube_points[N_POINTS(9)]; // 9*9*9 cube
+
 bool is_running = false;
 
 void setup(void)
@@ -25,6 +32,22 @@ void setup(void)
 	}
 	else
 	{
+
+		int point_count = 0;
+
+		// Start loading array of vectors
+		//  From -1 to 1 (in this 9x9x9 cube)
+		for (float x = -1; x <= 1; x += 0.25)
+		{
+			for (float y = -1; y <= 1; y += 0.25)
+			{
+				for (float z = -1; z <= 1; z += 0.25)
+				{
+					vec3_t new_point = {.x = x, .y = y, .z = z};
+					cube_points[point_count++] = new_point;
+				}
+			}
+		}
 	}
 }
 
@@ -71,9 +94,6 @@ int main(int argc, char *args[])
 	is_running = initialize_window();
 
 	setup();
-
-	// VECTOR STRUCT - FIRST IMPLEMENTATION
-	vec3_t my_vector = {2.0, 3.0, -4.0};
 
 	while (is_running)
 	{
