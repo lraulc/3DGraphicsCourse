@@ -2,5 +2,6 @@
     "files.associations": {
         "display.h": "c",
         "sdl.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

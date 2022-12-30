@@ -59,7 +59,7 @@ void render(void)
 
 
 	//...
-	draw_rectangle((int)256, 256, 400, 400, 0XFFFFFFFF);
+	draw_rectangle((int)256, 256, 400, 400, 0XFFAA44AA);
 	draw_grid(0xFF222222); // Grid Color
 
 
