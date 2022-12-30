@@ -7,6 +7,7 @@
 
 bool is_running = false;
 
+
 void setup(void)
 {
 	// Allocate color buffer in memory. //
