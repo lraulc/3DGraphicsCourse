@@ -1,17 +1,15 @@
-#include <stdio.h> // Adds standard library
-#include <stdint.h> //Adds uninsigned ints for 8, 16 or 32
+#include <stdio.h>	 // Adds standard library
+#include <stdint.h>	 //Adds uninsigned ints for 8, 16 or 32
 #include <stdbool.h> // Adds boolean support
 #include <SDL2/SDL.h>
 #include "Display.h"
 
-
 bool is_running = false;
-
 
 void setup(void)
 {
 	// Allocate color buffer in memory. //
-	color_buffer = (uint32_t*)malloc(sizeof(uint32_t) * window_width * window_height);
+	color_buffer = (uint32_t *)malloc(sizeof(uint32_t) * window_width * window_height);
 
 	// Create SDL Texture used to display the color buffer
 	color_buffer_texture = SDL_CreateTexture(
@@ -19,14 +17,13 @@ void setup(void)
 		SDL_PIXELFORMAT_ARGB8888,
 		SDL_TEXTUREACCESS_STREAMING,
 		window_width,
-		window_height
-	);
+		window_height);
 	if (!color_buffer)
 	{
 		fprintf(stderr, "Error allocating color buffer in memory.\n");
 	}
-	else {
-
+	else
+	{
 	}
 }
 
@@ -49,20 +46,18 @@ void process_input(void)
 
 void update(void)
 {
-	//TODO:
-
+	// TODO:
 }
 
 void render(void)
 {
-	//SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	// SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
-
 	//...
+	draw_pixel(20, 20, 0XFFFFFF00);
 	draw_rectangle((int)256, 256, 400, 400, 0XFFAA44AA);
 	draw_grid(0xFF222222); // Grid Color
-
 
 	render_color_buffer();
 	clear_color_buffer(0xFF000000);
@@ -70,8 +65,7 @@ void render(void)
 	SDL_RenderPresent(renderer);
 }
 
-
-int main(int argc, char* args[])
+int main(int argc, char *args[])
 {
 	is_running = initialize_window();
 
