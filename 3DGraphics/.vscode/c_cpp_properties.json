@@ -1,3 +1,4 @@
+// MacOS CPP properties
 {
     "configurations": [
         {
@@ -5,9 +6,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "//Library//Frameworks//",
-                "/Library/Frameworks/SDL2.framework/Versions/A/Headers",
-                "${workspaceFolder}/3DGraphics/include",
-                "${workspaceFolder}/3DGraphics/include"
+                "/Library/Frameworks/SDL2.framework/Versions/A/Headers"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -16,8 +15,7 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "macos-clang-arm64",
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "intelliSenseMode": "macos-clang-arm64"
         }
     ],
     "version": 4
