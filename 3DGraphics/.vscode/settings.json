@@ -2,7 +2,11 @@
     "files.associations": {
         "display.h": "c",
         "sdl.h": "c",
-        "vector.h": "c"
+        "vector.h": "c",
+        "atomic": "c",
+        "cstdint": "c",
+        "cmath": "c",
+        "complex": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "makefile.launchConfigurations": [
